@@ -52,5 +52,14 @@ GROUP BY name
 ORDER BY avg_length DESC;
 
 
+SELECT DISTINCT title,
+CASE 
+WHEN ISNULL(inventory_id) THEN "Not Available"
+ELSE "Available"
+END AS status_film
+FROM film
+LEFT JOIN inventory
+ON film.film_id=inventory.film_id;
 
-
+SELECT *
+FROM inventory;
